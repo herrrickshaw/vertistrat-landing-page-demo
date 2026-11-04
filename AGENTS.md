@@ -18,3 +18,5 @@
 - Practice pages use the shared hero, bento tiles, phases and CTA helpers; the energy practice reading list uses the exported title matcher in guides.ts to keep article URLs curated.
 
 - Articles are rendered on /insights/<slug> from Blogger's JSON feed by postId, sanitized, inside a Shadow DOM, with canonical pointing to the blog.
+- Home-only landing modules live in src/components/landing and use scoped landing tokens/fonts so the shared shell and other practices retain their existing identity.
+- Landing case details use accessible dialogs for illustrative examples rather than invented article URLs; the booking setting falls back to the existing Google Form until a verified destination is configured.
