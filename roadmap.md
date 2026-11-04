@@ -1,2 +1,4 @@
 - [x] Add operating office address and Google Map to home Contact and footer.
 - [x] Test office configuration and verify desktop/mobile in light and dark modes.
+- [x] Build the six-section home redesign with preserved shell and Google Form.
+- [x] Verify desktop/mobile interactions, reduced motion, metadata and regression tests (30 passed); Google Form loads with its submit control, without sending a test enquiry.
