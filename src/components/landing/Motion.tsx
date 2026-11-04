@@ -5,9 +5,9 @@ export function Reveal({ children, className = "" }: { children: ReactNode; clas
   useEffect(() => {
     const element = ref.current;
     if (!element || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    element.dataset.reveal = "pending";
+    element.dataset["reveal"] = "pending";
     const observer = new IntersectionObserver(([entry]) => {
-      if (entry?.isIntersecting) { element.dataset.reveal = "visible"; observer.disconnect(); }
+      if (entry?.isIntersecting) { element.dataset["reveal"] = "visible"; observer.disconnect(); }
     }, { threshold: 0.08 });
     observer.observe(element);
     return () => observer.disconnect();
