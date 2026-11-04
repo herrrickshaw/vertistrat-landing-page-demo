@@ -1,5 +1,7 @@
-import { Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { Link, useRouterState } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { CONTACT_EMAIL, CONTACT_PHONE_DISPLAY, CONTACT_PHONE_TEL, DISCLAIMER, OFFICE_ADDRESS_LINES, OFFICE_MAP_URL } from "@/config";
 import { Logo } from "./ui";
 
@@ -14,8 +16,16 @@ const NAV = [
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const isHome = useRouterState({ select: (s) => s.location.pathname === "/" });
+  useEffect(() => {
+    const update = () => setScrolled(window.scrollY > 24);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, []);
   return (
-    <header className="sticky top-0 z-40 border-b bg-background/90 backdrop-blur">
+    <header className={`sticky top-0 z-40 border-b bg-background/90 backdrop-blur ${isHome ? `landing-header ${scrolled ? "header-scrolled" : ""}` : ""}`}>
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:bg-card focus:p-2">Skip to content</a>
       <div className="container-site flex h-16 items-center justify-between">
         <Link to="/" aria-label="VertiStrat home"><Logo /></Link>
@@ -26,12 +36,10 @@ export function Header() {
                 <Link to={n.to} className="text-muted-foreground hover:text-foreground" activeProps={{ className: "text-foreground highlight" }}>{n.label}</Link>
               </li>
             ))}
-            <li><Link to="/" hash="contact" className="rounded-lg bg-primary px-4 py-2 text-primary-foreground hover:opacity-90">Contact</Link></li>
+            <li><Button asChild className="header-contact"><Link to="/" hash="contact">Contact</Link></Button></li>
           </ul>
         </nav>
-        <button className="rounded-md border px-3 py-1.5 text-sm lg:hidden" aria-expanded={open} aria-controls="mnav" onClick={() => setOpen(!open)}>
-          {open ? "Close" : "Menu"}
-        </button>
+        <Button variant={isHome ? "diagnosticOutline" : "outline"} size="icon" className="lg:hidden" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mnav" onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</Button>
       </div>
       {open && (
         <nav id="mnav" aria-label="Mobile" className="border-t lg:hidden">
