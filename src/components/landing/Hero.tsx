@@ -21,16 +21,16 @@ function DeliveryVisual() {
 
 export function Hero() {
   return <section aria-labelledby="hero-title" className="landing-hero bg-landing-navy text-landing-light">
-    <div className="container-site relative grid gap-12 py-16 md:grid-cols-12 md:gap-8 md:py-20 lg:py-24">
+    <div className="container-site relative grid gap-8 py-10 md:grid-cols-12 md:gap-8 md:py-20 lg:py-24">
       <div className="md:col-span-7 lg:col-span-7">
         <p className="mb-6 flex items-center gap-2 text-xs font-semibold text-landing-gold"><span className="h-px w-6 bg-landing-gold" />Project Delivery &amp; Management Consulting</p>
         <p className="mb-4 text-sm font-medium text-landing-muted">Vertistrat Solutions</p>
         <h1 id="hero-title" className="landing-h1 font-extrabold">From Project<br className="hidden lg:block" /> Complexity to<br className="hidden lg:block" /> <span className="text-landing-gold">Execution Clarity</span></h1>
-        <p className="mt-6 max-w-xl text-base leading-7 text-landing-muted lg:text-lg lg:leading-8">We diagnose, integrate and run the delivery engine behind your most critical programmes — so capital projects land on time, on budget and on scope.</p>
+        <p className="mt-6 max-w-xl text-sm leading-6 text-landing-muted md:text-base md:leading-7 lg:text-lg lg:leading-8">We diagnose, integrate and run the delivery engine behind your most critical programmes — so capital projects land on time, on budget and on scope.</p>
         <div className="mt-8 flex flex-wrap gap-4"><Button asChild variant="diagnostic" className="h-12 px-5"><a href="#contact">Schedule Project Diagnostic<ArrowRight /></a></Button><Button asChild variant="diagnosticOutline" className="h-12 px-5"><a href="#case-studies">View Case Studies<ArrowDown /></a></Button></div>
         <p className="mt-6 flex items-center gap-2 text-xs text-landing-muted"><Check className="size-4 text-landing-gold" />Independent thinking. Embedded delivery. Measurable progress.</p>
       </div>
-      <div className="flex items-center md:col-span-5"><DeliveryVisual /></div>
+      <div className="hidden items-center md:col-span-5 md:flex"><DeliveryVisual /></div>
       <div className="flex items-center gap-3 border-t border-landing-line pt-6 text-xs text-landing-muted md:col-span-12"><span className="text-landing-gold">01 /</span>Strategy is only the beginning.<a href="#framework" className="ml-auto inline-flex items-center gap-2 text-landing-light hover:text-landing-gold">How we work<ArrowDown className="size-4" /></a></div>
     </div>
   </section>;
