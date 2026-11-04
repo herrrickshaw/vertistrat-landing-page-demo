@@ -9,7 +9,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        diagnostic: "bg-landing-amber text-landing-light hover:bg-landing-amber-hover focus-visible:ring-landing-gold font-semibold",
+        diagnostic: "bg-landing-amber text-landing-ink hover:bg-landing-amber-hover hover:text-landing-light focus-visible:ring-landing-gold font-semibold",
         diagnosticOutline: "border border-landing-line text-landing-light bg-transparent hover:bg-landing-panel focus-visible:ring-landing-gold",
         default: "bg-primary text-primary-foreground shadow hover:bg-primary/90",
         destructive: "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",

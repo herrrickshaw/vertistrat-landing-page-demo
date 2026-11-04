@@ -1,7 +1,7 @@
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { LANDING_CASES } from "@/config";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription, DialogClose } from "@/components/ui/dialog";
 import { Reveal } from "./Motion";
 
 export function CaseStudies() {
