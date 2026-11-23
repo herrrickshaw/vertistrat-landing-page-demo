@@ -34,6 +34,10 @@ describe("error-capture", () => {
     expect(describeError(Object.assign(new Error("s"), { status: "404" }))).not.toContain(
       "(status",
     );
+    // when both are present, `status` wins over `statusCode`
+    expect(
+      describeError(Object.assign(new Error("s"), { status: 404, statusCode: 500 })),
+    ).toContain(" (status 404)");
   });
 
   it("describeError handles non-errors and limits depth and length", async () => {

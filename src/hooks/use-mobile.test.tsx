@@ -50,6 +50,11 @@ describe("useIsMobile", () => {
       listeners.forEach((cb) => cb());
     });
     expect(result.current).toBe(true);
+    act(() => {
+      (window as unknown as { innerWidth: number }).innerWidth = 768;
+      listeners.forEach((cb) => cb());
+    });
+    expect(result.current).toBe(false); // exactly the breakpoint is not mobile
     unmount();
     expect(mql.removeEventListener).toHaveBeenCalledWith("change", expect.any(Function));
     expect(listeners.size).toBe(0);

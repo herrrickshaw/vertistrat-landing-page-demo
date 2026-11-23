@@ -119,6 +119,10 @@ describe("home page", () => {
     expect(pending.length).toBeGreaterThan(0);
     pending.forEach((el) => expect(el.dataset["reveal"]).toBe("pending"));
     const i = observers.findIndex((o) => o.el === pending[0]);
+    expect(observers[i]!.options).toEqual({ threshold: 0.08 });
+    expect(observers.find((o) => o.el === screen.getByLabelText("98%"))!.options).toEqual({
+      threshold: 0.6,
+    });
     act(() => intersect(i, true));
     expect(pending[0]!.dataset["reveal"]).toBe("visible");
   });

@@ -3,7 +3,12 @@ import { RouterProvider, createMemoryHistory, createRouter } from "@tanstack/rea
 import { render } from "@testing-library/react";
 import { routeTree } from "@/routeTree.gen";
 
-type Observer = { cb: IntersectionObserverCallback; el: Element | null; disconnected: boolean };
+type Observer = {
+  cb: IntersectionObserverCallback;
+  el: Element | null;
+  disconnected: boolean;
+  options?: IntersectionObserverInit;
+};
 export const observers: Observer[] = [];
 
 /** jsdom has no IntersectionObserver; record instances so tests can trigger intersections. */
@@ -11,8 +16,8 @@ export function installIntersectionObserver() {
   observers.length = 0;
   class FakeObserver {
     private rec: Observer;
-    constructor(cb: IntersectionObserverCallback) {
-      this.rec = { cb, el: null, disconnected: false };
+    constructor(cb: IntersectionObserverCallback, options?: IntersectionObserverInit) {
+      this.rec = { cb, el: null, disconnected: false, ...(options ? { options } : {}) };
       observers.push(this.rec);
     }
     observe(el: Element) {
